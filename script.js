@@ -5,7 +5,7 @@ let operatorClicked = false;
 const equals = document.getElementById("equals");
 const clear = document.getElementById("clr");
 let operatorPosition = -1;
-const MAX_LENGTH = 23;
+const MAX_LENGTH = 20;
 let firstNum;
 let operator;
 let secondNum;
@@ -28,8 +28,8 @@ for (let i = 0; i < buttons.length; i++) {
                 operator = val;
                 operatorPosition = screen.textContent.length;
                 operatorClicked = true;   
-                if (screen.textContent.length + val.length + 2 <= MAX_LENGTH) { // +2 for spaces around the operator
-                    screen.textContent += ` ${val} `; // Template literal used here
+                if (screen.textContent.length + val.length + 2 <= MAX_LENGTH) { 
+                    screen.textContent += ` ${val} `;
                 }
             }
         } else {
@@ -96,7 +96,7 @@ function operate(f, s, v) {
             operatorClicked = false;
             return;
     }
-    result = parseFloat(result.toFixed(9));
+    result = parseFloat(result.toFixed(4));
     screen.textContent = result;
     firstNum = '';
     secondNum = '';
