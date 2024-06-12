@@ -10,7 +10,7 @@ h1{
 
 #screen{
     height: 120px;
-    width: 450px;
+    max-width: 450px;
     background-color: #004d00;
     margin-left: auto;
     margin-right: auto;

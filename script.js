@@ -5,6 +5,7 @@ let operatorClicked = false;
 const equals = document.getElementById("equals");
 const clear = document.getElementById("clr");
 let operatorPosition = -1;
+const MAX_LENGTH = 23;
 let firstNum;
 let operator;
 let secondNum;
@@ -27,10 +28,14 @@ for (let i = 0; i < buttons.length; i++) {
                 operator = val;
                 operatorPosition = screen.textContent.length;
                 operatorClicked = true;   
-                screen.textContent += val;
+                if (screen.textContent.length + val.length + 2 <= MAX_LENGTH) { // +2 for spaces around the operator
+                    screen.textContent += ` ${val} `; // Template literal used here
+                }
             }
         } else {
-            screen.textContent += val;
+            if (screen.textContent.length + val.length <= MAX_LENGTH) {
+                screen.textContent += val;
+            }
         }
     });
 }
@@ -60,7 +65,7 @@ function operate(f, s, v) {
     if (isNaN(firstNumber) || isNaN(secondNumber)) {
         screen.textContent = "ERROR";
         console.log("ERROR");
-        errorOccurred = true; // Set the error flag
+        errorOccurred = true;
         operatorClicked = false;
         return;
     }
@@ -91,6 +96,7 @@ function operate(f, s, v) {
             operatorClicked = false;
             return;
     }
+    result = parseFloat(result.toFixed(9));
     screen.textContent = result;
     firstNum = '';
     secondNum = '';
